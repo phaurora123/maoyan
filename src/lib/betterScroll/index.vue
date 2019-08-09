@@ -10,10 +10,21 @@ export default {
   mounted() {
     this.scroll = new BScroll(this.$refs.wrapper, {
       tap: true,
-      click:true
+      click:true,
     //   pullDownRefresh: true,
-    //   pullUpLoad: true
+      pullUpLoad: true
     });
+  },
+  methods:{
+    handlePullingUp(callback){
+      this.scroll.on('pullingUp',()=>{
+        callback()
+      })
+    },
+    handleFinishPullingUp(){
+      this.scroll.finishPullUp();
+      this.scroll.refresh()
+    }
   }
 };
 </script>

@@ -3,14 +3,15 @@ import http from '../utils/http.js'
 export const ctgPage_api = (title, pageid) => http(
     'get', '/ddcategory.php', { action: 'get_content', title: title, pageid: pageid }
 )
-// 2、点击社会 进入列表页
+// 2、点击社会 进入列表页+下拉加载更多
 export const ctgDetail_api = (cid = '01.03.45.00.00.00',
     sort_type,
     have_ad = 1,
     act = 'get_product_flow_category',
     result_set_all_count = 0,
     has_used_recommend = 0,
-    cities
+    cities,
+    page
 ) => http('get', '/search_ajax.php',
     {
         cid: cid,
@@ -19,7 +20,8 @@ export const ctgDetail_api = (cid = '01.03.45.00.00.00',
         act: act,
         result_set_all_count: result_set_all_count,
         has_used_recommend: has_used_recommend,
-        cities
+        cities,
+        page
     })
 
 //3、搜索框
@@ -43,7 +45,6 @@ export const filter_api = (
 ) => http('get', '/search_ajax.php',
     {
         cid: cid,
-
         act: act,
         result_set_all_count: result_set_all_count,
         has_used_recommend: has_used_recommend,

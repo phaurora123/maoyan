@@ -17,7 +17,7 @@
         <a href>全部</a>
       </li>
       <li v-for="(item,index) in ctgCat" :key="index">
-        <a href>{{item.Name}}</a>
+        <a>{{item.Name}}</a>
       </li>
     </ul>
   </div>

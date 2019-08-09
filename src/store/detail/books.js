@@ -1,6 +1,6 @@
 const state = {
     ctgId: '',
-    ctgDetail: {},
+    ctgDetail: JSON.parse(sessionStorage.getItem('ctgDetail'))||{},
     ctgCatHead: {},
     ctgCat: [],
     ctgList: [],
@@ -27,8 +27,15 @@ const mutations = {
             .split("=")[1];
     },
     getBooksDetailMutations(state, params) {
-        state.ctgDetail = JSON.parse(JSON.stringify(params))
-        // console.log(state.ctgDetail,11111111111)
+        if(state.ctgDetail.products){
+            JSON.parse(JSON.stringify(params)).products.forEach(item => {
+                state.ctgDetail.products.push(item)
+            });   
+        }else{
+            state.ctgDetail=JSON.parse(JSON.stringify(params))
+            sessionStorage.setItem('ctgDetail',JSON.stringify(state.ctgDetail))
+        }
+        console.log(state.ctgDetail,11111111111)
         state.ctgCatHead = state.ctgDetail.parrent_cat;
         if (state.ctgDetail.categories.length > 0) {
             state.ctgCat = state.ctgDetail.categories

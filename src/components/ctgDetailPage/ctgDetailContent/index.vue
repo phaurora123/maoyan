@@ -27,7 +27,7 @@
           <i>
             <b class="prtPriceLeft">￥</b>
             <b class="prtPriceMiddle">{{parseInt(item.price)}}</b>
-            <b class="prtPriceRight">{{item.price.replace(/\d*\./,'.')}}</b>
+            <!-- <b class="prtPriceRight">{{item.price.replace(/\d*\./,'.')}}</b> -->
           </i>
           <i class="prtPriceOriginal">{{item.original_price}}</i>
           <i class="prtPriceDiscount">
